@@ -26,8 +26,8 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        $data = $request -> all();
-        return response()->json(Task::create($data));
+        $data = $request -> validated();
+        return response()->json(Task::create($data),201);
     }
 
     /**
