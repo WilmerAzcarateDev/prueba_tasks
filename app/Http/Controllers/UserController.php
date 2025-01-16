@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,12 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(User::all());
+    }
+
+    public function userTasks(User $user)
+    {
+        return response()->json($user->tasks);
     }
 
     /**
@@ -25,17 +30,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request -> all();
-        return response()->json(Task::create($data));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(User $user)
     {
         //
     }
@@ -44,25 +48,22 @@ class TaskController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, User $user)
     {
-        $data = $request -> all();
-        $task->update($data);
-        return response()->json($task);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(User $user)
     {
-        $task->delete();
-        return response()->json(['message'=>__('La tarea fue eliminada correctamente')]);
+        //
     }
 }
